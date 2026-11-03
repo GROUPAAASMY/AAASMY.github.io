@@ -1,0 +1,126 @@
+/* =========================================================
+   tasks.css  -  HOW THE TASKS PAGE LOOKS
+   Sections: 1 Variables  2 Base  3 Header  4 Progress card
+             5 Task list  6 Buttons and tab bar  7 Dialog  8 Phones/desktop
+   ========================================================= */
+
+/* 1. VARIABLES ("design tokens")
+   Change a colour or font here ONCE and it changes everywhere on the page.
+   These same values should be written down in style_guidelines.txt. */
+:root {
+  --bg-top: #fbf1f4;           /* page background gradient, top */
+  --bg-bottom: #f3e1e7;        /* page background gradient, bottom */
+  --card: #f4e0e6;             /* pink cards */
+  --white: #ffffff;
+  --plum: #7a2748;             /* main brand colour: buttons, ticks, ring */
+  --plum-dark: #5e1a36;
+  --ink: #2b1320;              /* main text */
+  --muted: #7c6370;            /* secondary text */
+  --line: #efdde3;             /* thin dividers */
+  --avatar-1: #8d3556;         /* avatar circle colours */
+  --avatar-2: #a9506f;
+  --avatar-3: #6f2146;
+  --font-heading: "Merriweather", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --radius: 22px;
+}
+
+/* 2. BASE */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: linear-gradient(180deg, var(--bg-top), var(--bg-bottom)) fixed;
+  line-height: 1.45;
+}
+button, select, input { font: inherit; color: inherit; }
+button { cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3 { margin: 0; }
+:focus-visible { outline: 3px solid var(--plum); outline-offset: 2px; border-radius: 8px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+/* The app is one centred column the width of a phone */
+.app { max-width: 430px; min-height: 100vh; margin: 0 auto; padding: 20px 18px 110px; position: relative; }
+
+/* 3. HEADER */
+.top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; }
+.brand { display: flex; align-items: center; gap: 12px; }
+.logo { width: 42px; height: 42px; border-radius: 12px; background: #e9b8c8; display: grid; place-items: center; }
+.brand-text strong { display: block; font-family: var(--font-heading); font-size: 1.05rem; line-height: 1.1; }
+.brand-text small { color: var(--muted); font-size: .72rem; }
+.top-actions { display: flex; align-items: center; gap: 10px; }
+.icon-btn { width: 42px; height: 42px; border-radius: 50%; border: 0; background: var(--white); display: grid; place-items: center; box-shadow: 0 2px 8px rgba(122,39,72,.12); }
+.avatar { width: 42px; height: 42px; border-radius: 50%; background: var(--plum); color: #fff; display: grid; place-items: center; font-weight: 700; font-size: .8rem; flex-shrink: 0; }
+
+h1 { font-family: var(--font-heading); font-size: 1.9rem; font-weight: 900; line-height: 1.15; }
+.subtitle { color: var(--muted); margin: 4px 0 20px; }
+
+/* 4. PROGRESS CARD */
+.progress-card { background: var(--card); border-radius: var(--radius); padding: 18px 20px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 26px; }
+.progress-left { display: flex; align-items: center; gap: 14px; }
+.big-check { width: 54px; height: 54px; border-radius: 50%; background: var(--plum); display: grid; place-items: center; flex-shrink: 0; }
+.progress-card .label { display: block; font-size: .85rem; color: var(--ink); }
+.progress-card .count { font-family: var(--font-heading); font-size: 1.9rem; font-weight: 900; line-height: 1.1; }
+.ring { position: relative; width: 84px; height: 84px; }
+.ring svg { transform: rotate(-90deg); }
+.ring circle { fill: none; stroke-width: 7; }
+.ring-bg { stroke: rgba(122,39,72,.15); }
+.ring-fg { stroke: var(--plum); stroke-linecap: round; stroke-dasharray: 201; stroke-dashoffset: 201; transition: stroke-dashoffset .6s ease; }
+.ring-text { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; }
+.ring-text b { font-size: 1rem; line-height: 1; }
+.ring-text small { font-size: .55rem; color: var(--muted); }
+
+/* 5. TASK LIST */
+.list-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.list-head h2 { font-size: 1rem; font-family: var(--font-body); font-weight: 700; }
+.select-wrap select { appearance: none; background: var(--white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237a2748' stroke-width='3'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center; border: 1px solid var(--line); border-radius: 99px; padding: .5rem 2rem .5rem 1rem; font-size: .85rem; font-weight: 600; }
+.task-list { list-style: none; margin: 0 0 18px; padding: 4px 18px; background: var(--white); border-radius: var(--radius); box-shadow: 0 4px 20px rgba(122,39,72,.08); }
+.task { border-bottom: 1px solid var(--line); }
+.task:last-child { border-bottom: 0; }
+.task-row { display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: 14px; padding: 14px 0; }
+.check { width: 26px; height: 26px; border-radius: 50%; border: 2px solid #d9bfca; background: var(--white); display: grid; place-items: center; padding: 0; transition: .2s; }
+.check svg { width: 14px; height: 14px; opacity: 0; }
+.check:hover { border-color: var(--plum); }
+.task.done .check { background: var(--plum); border-color: var(--plum); }
+.task.done .check svg { opacity: 1; }
+.task.done .task-name { text-decoration: line-through; color: var(--muted); }
+.task-name { font-weight: 600; font-size: .98rem; }
+.task-sub { color: var(--muted); font-size: .8rem; }
+.avatar.sm { width: 36px; height: 36px; font-size: .72rem; }
+.avatar.c1 { background: var(--avatar-1); } .avatar.c2 { background: var(--avatar-2); } .avatar.c3 { background: var(--avatar-3); }
+.chev { border: 0; background: none; padding: 4px; color: var(--muted); display: grid; transition: transform .2s; }
+.chev[aria-expanded="true"] { transform: rotate(90deg); color: var(--plum); }
+.detail { display: none; padding: 0 0 14px 40px; font-size: .85rem; color: var(--muted); }
+.detail.open { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.remind { border: 1px solid var(--line); background: var(--white); color: var(--plum); font-weight: 600; font-size: .78rem; padding: .35rem .8rem; border-radius: 99px; }
+.remind:hover { background: var(--plum); color: #fff; }
+.empty { text-align: center; color: var(--muted); margin: 8px 0 18px; }
+
+/* 6. BUTTONS AND TAB BAR */
+.add-btn { width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 1rem; border: 0; border-radius: 18px; background: var(--plum); color: #fff; font-weight: 600; font-size: 1.05rem; box-shadow: 0 10px 22px -10px var(--plum); transition: .2s; }
+.add-btn:hover { background: var(--plum-dark); transform: translateY(-1px); }
+.tabs { position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%); width: min(430px, calc(100% - 24px)); background: rgba(255,255,255,.92); backdrop-filter: blur(10px); border-radius: 26px; display: flex; justify-content: space-around; padding: 10px 6px; box-shadow: 0 8px 30px rgba(122,39,72,.18); z-index: 10; }
+.tabs a { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: .68rem; color: var(--muted); min-width: 58px; font-weight: 500; }
+.tabs a.active { color: var(--plum); font-weight: 700; }
+.tab-dot { width: 22px; height: 22px; border-radius: 50%; background: var(--plum); display: grid; place-items: center; }
+
+/* 7. DIALOG (the "Add a task" pop-up) */
+dialog { border: 0; border-radius: 24px; padding: 24px; width: min(400px, 92vw); color: var(--ink); box-shadow: 0 30px 80px -20px rgba(43,19,32,.5); }
+dialog::backdrop { background: rgba(43,19,32,.4); backdrop-filter: blur(3px); }
+dialog h3 { font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 14px; }
+dialog label { display: block; font-size: .85rem; font-weight: 600; margin-bottom: 12px; }
+dialog input, dialog select { display: block; width: 100%; margin-top: 6px; padding: .7rem .9rem; border: 1px solid #e3cdd6; border-radius: 12px; background: #fff; }
+.dialog-actions { display: flex; gap: 10px; margin-top: 18px; }
+.btn { flex: 1; padding: .8rem; border-radius: 99px; border: 1px solid var(--line); background: #fff; font-weight: 700; }
+.btn.primary { background: var(--plum); border-color: var(--plum); color: #fff; }
+.toast { position: fixed; left: 50%; bottom: 100px; transform: translate(-50%, 20px); background: var(--ink); color: #fff; padding: .7rem 1.2rem; border-radius: 99px; font-size: .88rem; font-weight: 600; opacity: 0; pointer-events: none; transition: .3s; z-index: 30; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* 8. WIDE SCREENS: keep the phone column, add a soft frame so it looks intentional */
+@media (min-width: 700px) {
+  body { padding: 30px 0; }
+  .app { background: rgba(255,255,255,.45); border-radius: 36px; box-shadow: 0 30px 80px -30px rgba(122,39,72,.35); min-height: 0; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
