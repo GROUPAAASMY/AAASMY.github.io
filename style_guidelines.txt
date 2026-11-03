@@ -1,0 +1,67 @@
+ROOMBUDDY STYLE GUIDELINES
+SEG 2900 - Group AAASMY
+Version 1 (drafted from the phone mockups and the Tasks page; any teammate may edit it)
+
+Purpose: every page should look like it belongs to the same app. If you are
+unsure how something should look, use the values below instead of guessing.
+In the CSS files these values are stored once as variables (see :root in
+tasks.css), so changing a value there changes it everywhere.
+
+1. BRAND
+- App name: RoomBuddy (one word, capital B). Tagline: "Home. Together."
+- Tone: warm, friendly, short sentences. Example: "A little effort goes a long way."
+
+2. COLOURS
+- Brand plum (buttons, ticks, progress ring, active tab): #7a2748
+- Dark plum (button hover): #5e1a36
+- Main text: #2b1320
+- Secondary text: #7c6370
+- Card background (pink): #f4e0e6
+- Page background: gradient from #fbf1f4 (top) to #f3e1e7 (bottom)
+- White (list cards, inputs, tab bar): #ffffff
+- Thin divider lines: #efdde3
+- Avatar circles (one per roommate): #8d3556, #a9506f, #6f2146
+- Rule: use plum for anything the user can act on. Do not add new bright colours.
+
+3. TYPOGRAPHY
+- Headings and big numbers: Merriweather, bold (700/900), fallback Georgia, serif
+- Everything else: Inter, fallback system-ui, sans-serif
+- Page title (h1): 1.9rem. Section heading: 1rem bold. Body text: about 1rem.
+  Secondary lines (times, hints): 0.8rem in the secondary text colour.
+
+4. SHAPE AND SPACING
+- Large cards: 22px rounded corners. Buttons: 18px corners (main) or fully
+  round (small pills and dropdowns). Avatars and checkboxes: circles.
+- Shadows are soft and plum-tinted, never black.
+- Layout is a single centred column, maximum width 430px (phone first).
+  On wider screens the column stays centred.
+- Side padding: 18px.
+
+5. COMPONENTS
+- Main button: full width, plum background, white text, 600 weight, icon on the left.
+- Task row: round checkbox, name, small grey sub-line, avatar with initials, arrow.
+  A completed task is struck through and greyed, and its checkbox fills plum.
+- Progress card: pink card, big check icon, count like "1 / 5", percent ring on the right.
+- Dropdown filter: white pill with a thin border and a plum arrow.
+- Bottom tab bar: floating white bar with Home, Tasks, Groceries, Amenities, Events.
+  The active tab is plum and bold.
+- Pop-up forms use the native dialog element with 24px rounded corners.
+- Small messages ("toasts") appear at the bottom: dark background, white text.
+
+6. ACCESSIBILITY
+- Every icon-only button needs an aria-label.
+- Keep a visible focus outline (3px plum) on anything clickable.
+- Keep text contrast high: main text on white or pink, never grey on pink.
+- Respect "reduce motion": animations must switch off when the user asks.
+
+7. CODE RULES (Deliverable 3)
+- HTML = structure only. CSS = looks. JavaScript = behaviour. Keep them in
+  separate files and link them with <link rel="stylesheet"> and <script src defer>.
+- Name files in lowercase for CSS and JS (tasks.css, tasks.js). Page names keep
+  the current capital letters (Tasks.html). File names are case-sensitive on GitHub.
+- Comment each section of a CSS or JS file so a teammate can find things.
+- Commit directly to main with a clear message, from your own account.
+
+8. OPEN QUESTIONS (team to decide)
+- One shared stylesheet for all pages, or one per page as now?
+- Final decision on the Add Task button (kept in the phone mockup).
